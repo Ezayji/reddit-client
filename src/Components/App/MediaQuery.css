@@ -1,0 +1,12 @@
+/* 768px width */
+
+@media only screen and (max-width: 768px){
+    .Logo {
+        background-image: url("../../redditheader4.png");
+        width: 45px;
+    }
+    
+    .post {
+        width: 90%;
+    }
+}
