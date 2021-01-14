@@ -1,4 +1,5 @@
 import ReactPlayer from 'react-player';
+import defthumb from '../../thumbnail_default.png';
 
 
 const Image = ({ post }) => {
@@ -44,6 +45,16 @@ const Image = ({ post }) => {
                              width="100%"
                              height="100%"
                              controls={true} />
+            </div>
+        )
+    } else if(post.data.thumbnail.includes("default") || post.data.thumbnail.includes("self")) {
+        let link = post.data.url;
+        if(link.length > 20) link = link.substring(0, 20);
+
+        return (
+            <div className="link">
+                <a className="url" href={post.data.url} >{link}...</a>
+                <img src={defthumb} alt={post.data.title} className="thumbnail" />
             </div>
         )
     } else if (!post.data.url.includes(".jpg") || !post.data.url.includes(".png") || !post.data.url.includes(".gif") || !post.data.url.includes(".gifv")){

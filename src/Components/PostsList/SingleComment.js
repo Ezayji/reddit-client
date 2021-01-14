@@ -13,7 +13,7 @@ const SingleComment = ({ comment }) => {
             <Reply reply={reply} key={i} />
     ))
     } else {
-        reply = null;
+        reply = null; 
     }
 
     return(

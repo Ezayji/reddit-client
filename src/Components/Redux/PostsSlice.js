@@ -7,7 +7,7 @@ const initialState = {
 }
 
 export const fetchInitialPosts = createAsyncThunk('posts/fetchInitialPosts', async () => {
-    const url = 'https://www.reddit.com/r/EarthPorn.json?limit=50';
+    const url = 'https://www.reddit.com/r/all.json?limit=50';
     const posts = await fetch(url);
     const jsonResponse = await posts.json()
     return jsonResponse;

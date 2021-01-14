@@ -4,7 +4,7 @@ import SingleComment from './SingleComment';
 const Content = ({ url }) => {
     const [comments, setComments] = useState(null);
     useEffect(() => {
-        const clink = `https://www.reddit.com${url}.json`
+        const clink = `https://www.reddit.com${url}.json?limit=200`
         async function fetchComments(){
             const response = await fetch(clink);
             const jsonResponse = await response.json();
