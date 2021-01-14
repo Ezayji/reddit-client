@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import SingleComment from './SingleComment';
 
 const Content = ({ url }) => {
-    const [comments, setComments] = useState();
+    const [comments, setComments] = useState(null);
     useEffect(() => {
         const clink = `https://www.reddit.com${url}.json`
         async function fetchComments(){
