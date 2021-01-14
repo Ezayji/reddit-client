@@ -17,4 +17,3 @@ const Post = ({ match }) => {
 }
 
 export default Post;
-/* <PostRender post={post} key={postId} /> */

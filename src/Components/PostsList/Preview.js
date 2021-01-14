@@ -2,8 +2,18 @@ import ReactPlayer from 'react-player';
 
 
 const Image = ({ post }) => {
-    
-    if (post.data.url.includes(".jpg") || post.data.url.includes(".png")){
+    if(post.data.url.includes("instagram.fbeg")){
+        let link = post.data.url;
+        if(link.length > 20) link = link.substring(0, 20);
+        let thumbnail = post.data.thumbnail;
+
+        return (
+            <div className="link">
+                <a className="url" href={post.data.url} >{link}...</a>
+                <img src={thumbnail} alt={post.data.title} className="thumbnail" />
+            </div>
+        )
+    } else if (post.data.url.includes(".jpg") || post.data.url.includes(".png")){
         return (
             <img src={post.data.url} alt={post.data.title} className="image" />
         )

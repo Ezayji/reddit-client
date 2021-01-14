@@ -10,9 +10,9 @@ const PostRender = ({ post }) => {
     return (
         <article className="post" key={post.data.id}>
             <div className="votes">
-                <div className="arrow"></div>
+                <div className="arrow arrowUpMargin"></div>
                 <p className="ups">{upVotes}</p>
-                <div className="arrow2"></div>
+                <div className="arrow2 arrowDownMargin"></div>
             </div>
             <div className="content">
                 <h1>{post.data.title}</h1>
