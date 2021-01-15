@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { termAdded } from '../Redux/PostsSlice';
+import { termAdded, fetchResults } from '../Redux/PostsSlice';
 import store from "../Redux/Store";
 import { Link } from 'react-router-dom';
 
@@ -21,6 +21,8 @@ function SearchBar(){
         const search = improved.join('');
 
         store.dispatch(termAdded(search));
+
+        store.dispatch(fetchResults())
         
         setInput('')
     }

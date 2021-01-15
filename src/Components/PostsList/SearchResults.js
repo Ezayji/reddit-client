@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectAllPosts } from '../Redux/PostsSlice';
+import { selectAllPosts, fetchResults } from '../Redux/PostsSlice';
 import PostRender from './PostRender';
 
 import store from '../Redux/Store';
@@ -13,15 +13,15 @@ const SearchResults = () => {
     const searchTerm = useSelector(state => state.term);
     const postStatus = useSelector(state => state.posts.status);
     const error = useSelector(state => state.posts.error);
-/*
+    /*
     useEffect(() => {
         if(searchTerm !== ''){
-            store.dispatch(fetchResults(searchTerm));
+            store.dispatch(fetchResults());
         }
     }, [searchTerm])
-*/
+    */
     let content
-/*
+
     if(postStatus === 'finding'){
         content = <div>Loading...</div>
     } else if (postStatus === 'done'){
@@ -31,10 +31,10 @@ const SearchResults = () => {
     } else if (postStatus === 'error'){
         content = {error};
     } 
-*/ 
+ 
     return(
         <div className='feed'>
-            hi
+            {content}
         </div> 
     )
 }
