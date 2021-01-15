@@ -3,21 +3,28 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 const initialState = {
     posts: [],
     status: 'idle',
-    error: null
+    error: null,
+    term: ''
 }
 
 export const fetchInitialPosts = createAsyncThunk('posts/fetchInitialPosts', async () => {
-    const url = 'https://www.reddit.com/r/Futurology.json?limit=50';
+    const url = 'https://www.reddit.com/r/EarthPorn.json?limit=50';
     const posts = await fetch(url);
     const jsonResponse = await posts.json()
     return jsonResponse;
 })
 
 
+
+
 const postsSlice = createSlice({
     name: 'posts',
     initialState,
-    reducers: {},
+    reducers: {
+        termAdded(state, action) {
+            state.term = action.payload
+        }
+    },
     extraReducers: {
         [fetchInitialPosts.pending]: (state, action) => {
             state.status = 'loading'
@@ -33,6 +40,7 @@ const postsSlice = createSlice({
     }
 });
 
+export const { termAdded } = postsSlice.actions
 export default postsSlice.reducer
 
 export const selectAllPosts = (state) => state.posts.posts;
@@ -53,4 +61,4 @@ export const selectPostById = (state, postId) => {
     return posts[nr]
 };
 
-/* state.posts.posts.data.children.find((post) => post.data.key === postId) */
+/* 'https://www.reddit.com/r/EarthPorn.json?limit=50' 'https://www.reddit.com/search.json?q=ai%20' */

@@ -6,7 +6,7 @@ import PostRender from './PostRender';
 import store from '../Redux/Store';
 
 
-function PostsList(){
+function SearchResults(){
     const dispatch = useDispatch();
     const posts = useSelector(selectAllPosts);
 
@@ -14,13 +14,11 @@ function PostsList(){
     const error = useSelector(state => state.posts.error);
 
     useEffect(() => {
-        if(postStatus === 'idle') {
-            store.dispatch(fetchInitialPosts());
-        }
-    }, [postStatus, dispatch])
+        
+    }, [])
 
     let content
-
+/*
     if(postStatus === 'loading'){
         content = <div>Loading...</div>
     } else if (postStatus === 'succeeded'){
@@ -30,12 +28,16 @@ function PostsList(){
     } else if (postStatus === 'error'){
         content = {error};
     } 
-
+*/
     return(
         <div className='feed'>
-            {content}
+            hi
         </div> 
     )
 }
 
-export default PostsList;
+export default SearchResults;
+
+/*
+{content}
+ */

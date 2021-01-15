@@ -4,5 +4,5 @@ import postsReducer from './PostsSlice';
 export default configureStore({
     reducer: {
         posts: postsReducer
-    }
+    } 
 })
