@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 //import { fetchInitialPosts } from './Components/Redux/PostsSlice';
 import store from './Components/Redux/Store';
 
+
 //STORE --> GLOBALIZED STATE
 
 

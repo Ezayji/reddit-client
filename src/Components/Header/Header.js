@@ -1,11 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import SearchBar from '../SearchBar/SearchBar';
 
 function Header(){
     return (
         <header className="Header">
-            <div className="Logo"></div>
+            <Link to="/">
+            <div className="Logo">
+            </div>
+            </Link>
             <SearchBar />
         </header>
     )

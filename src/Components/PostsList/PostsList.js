@@ -14,10 +14,13 @@ function PostsList(){
     const error = useSelector(state => state.posts.error);
 
     useEffect(() => {
-        if(postStatus === 'idle') {
-            store.dispatch(fetchInitialPosts());
+        if(postStatus === 'idle' || postStatus === 'done') {
+        store.dispatch(fetchInitialPosts());
         }
     }, [postStatus, dispatch])
+
+    // if(postStatus === 'idle') {}
+    // postStatus, dispatch
 
     let content
 

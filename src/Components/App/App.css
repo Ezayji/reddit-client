@@ -20,8 +20,15 @@
 
 /* Universal Styles */
 
+body {
+    background: url('../../wallpaper.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
 .App {
-    background-color: #0a0d11;
+    
     color: #ffffffbe;
     font-family: 'Rubik';
 }
@@ -34,7 +41,7 @@ h1 {
 }
 
 span {
-    color: #4e04af;
+    color: #6a04ee;
 }
 
 /* Header Styles */
@@ -50,13 +57,17 @@ span {
 }
 
 .Logo {
-    background-image: url("../../reddit_long.png");
+    background-image: url("../../reddit_long2.png");
     background-size: cover;
     position: fixed;
     top: 8px;
     left: 12px;
     height: 45px;
     width: 131px;
+}
+
+.Logo:hover{
+    filter: drop-shadow(0px 0px 2px #6610d6);
 }
 
 /* SearchBar */
@@ -79,18 +90,37 @@ span {
 }
 
 .find-div{
-    margin-left: 12px;
     padding: 5px;
-    border: 3px solid #4e04af;
+}
+
+.find-link{
+    height: 32px;
+    width: 32px;
 }
 
 .find {
+    /*
     font-size: 16px;
     letter-spacing: 1px;
     text-decoration: none;
     color: #e7e7e7;
     height: 32px;
-    
+    */
+    background-image: url("../PostsList/search.png");
+    background-size: cover;
+    height: 32px;
+    width: 32px;
+    border: 2px solid #4e04af;
+}
+
+.results-for {
+    background-color:#0d1117c0;
+    border: 3px solid #6a04ee;
+}
+
+.results-for-div{
+    text-align: center;
+    width: 35%;
 }
 
 
@@ -214,7 +244,7 @@ span {
     width: 151px;
 }
 
-.check p:hover, .find-div:hover {
+.check p:hover, .find:hover {
     background-color:  #141820;
 }
 
@@ -314,4 +344,23 @@ span {
 .answer {
     margin-top: 0px;
     background-color: #10151d;
+}
+
+.show-replies{
+    font-family: 'Rubik';
+    font-size: 14px;
+    width: 110px;
+    text-align: center;
+    margin-top: -6px;
+    margin-bottom: 5px;
+    margin-left: 35px;
+    color: #e7e7e7;
+    border: 2px solid #6a04ee;
+    background-color: #0d111794;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.show-replies:hover {
+    background-color: #0d1117a6;
 }

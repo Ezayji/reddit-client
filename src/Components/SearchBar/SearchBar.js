@@ -33,8 +33,8 @@ function SearchBar(){
         term.push(input);
         search = (
             <div className="find-div" onClick={onSearch}>
-                <Link to={`/search/${term[term.length - 1]}`} className="find" >
-                    <p>Find</p>
+                <Link to={`/search/${term[term.length - 1]}`} className="find-link" >
+                    <div className="find"></div>
                 </Link>
             </div>
         )
