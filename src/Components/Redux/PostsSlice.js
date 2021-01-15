@@ -13,8 +13,16 @@ export const fetchInitialPosts = createAsyncThunk('posts/fetchInitialPosts', asy
     const jsonResponse = await posts.json()
     return jsonResponse;
 })
-
-
+/*
+export const fetchResults = createAsyncThunk('posts/fetchResults', async (term) => {
+  //  const term = useSelector(state => state.term); 
+    const url = `https://www.reddit.com/search.json?q=${term}`
+    const response = await fetch(url);
+    const jsonResponse = await response.json();
+    console.log(term);
+    return jsonResponse
+})
+*/
 
 
 const postsSlice = createSlice({
@@ -36,9 +44,22 @@ const postsSlice = createSlice({
         [fetchInitialPosts.rejected]: (state, action) => {
             state.status = 'failed'
             state.error = action.error.message
-        }
+        }/*,
+        [fetchResults.pending]: (state, action) => {
+            state.status = 'finding'
+        },
+        [fetchResults.fulfilled]: (state, action) => {
+            state.status = 'done'
+            state.posts = action.payload
+        },
+        [fetchResults.rejected]: (state, action) => {
+            state.status = 'failed'
+            state.error = action.error.message
+        } */
     }
 });
+
+
 
 export const { termAdded } = postsSlice.actions
 export default postsSlice.reducer

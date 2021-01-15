@@ -14,9 +14,14 @@ function SearchBar(){
 
     const onSearch = (e) => {
         e.preventDefault();
-        if(input){
-            store.dispatch(termAdded(input));
-        }
+        const splitInput = input.split(' ');
+        
+        const improved = splitInput.map(word => word = word + '%20');
+
+        const search = improved.join('');
+
+        store.dispatch(termAdded(search));
+        
         setInput('')
     }
 
