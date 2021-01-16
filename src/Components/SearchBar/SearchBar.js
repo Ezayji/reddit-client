@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { sortByAdded, postFromAdded } from '../Redux/FilterSlice';
 
+
+
 function SearchBar(){
     const [input, setInput] = useState('');
 
@@ -17,29 +19,35 @@ function SearchBar(){
 
     let term = [];
 
-    const onSearch = (e) => {
-        e.preventDefault();
+    const searchActions = () => {
+        
         const splitInput = input.split(' ');
         
         const improved = splitInput.map(word => word = word + '%20');
-
+    
         const search = improved.join('');
-
+    
         store.dispatch(termAdded(search));
-
+    
         store.dispatch(fetchResults())
         
         setInput('')
+    }
 
-        if(sortBy !== "Relevance" && postsFrom !== "All Time"){
+    const onSearch = (e) => {
+        e.preventDefault();
+        if(sortBy !== "Relevance" && postsFrom !== "all"){
             store.dispatch(sortByAdded("Relevance"));
-            store.dispatch(postFromAdded("All Time"));
-        } else if (sortBy !== "Relevance" && postsFrom === "All Time"){
+            store.dispatch(postFromAdded("all"));
+            searchActions();
+        } else if (sortBy !== "Relevance" && postsFrom === "all"){
             store.dispatch(sortByAdded("Relevance"));
-        } else if (sortBy === "Relevance" && postsFrom !== "All Time"){
-            store.dispatch(postFromAdded("All Time"));
+            searchActions();
+        } else if (sortBy === "Relevance" && postsFrom !== "all"){
+            store.dispatch(postFromAdded("all"));
+            searchActions();
         } else {
-            return;
+            searchActions();
         }
 
     }

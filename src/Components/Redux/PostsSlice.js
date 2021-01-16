@@ -15,11 +15,14 @@ export const fetchInitialPosts = createAsyncThunk('posts/fetchInitialPosts', asy
 })
 
 export const fetchResults = createAsyncThunk('posts/fetchResults', async (_, { getState }) => {
+    const sortBy = getState().filters.sortBy.toLowerCase();
+    const postsFrom = getState().filters.postsFrom;
+    
     const term = getState().posts.term; 
-    const url = `https://www.reddit.com/search.json?q=${term}`
+    const url = `https://www.reddit.com/search.json?q=${term}&sort=${sortBy}&t=${postsFrom}`
     const response = await fetch(url);
     const jsonResponse = await response.json();
-    console.log(term);
+    console.log(url);
     return jsonResponse
 })
 

@@ -175,6 +175,24 @@ option{
     color: #181e27;
 }
 
+.submit {
+    font-family: 'Rubik';
+    color: #e7e7e7;
+    background-color: transparent;
+    border: 2px solid #6a04ee;
+    cursor: pointer;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+label p{
+    font-size: 14px;
+}
+
+.submit:hover {
+    background-color:#0d1117c0;
+}
+
 /* Feed */
 
 .feed {

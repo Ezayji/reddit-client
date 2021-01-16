@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     sortBy: "Relevance",
-    postsFrom: "All Time"
+    postsFrom: "all"
 };
 
 const filterSlice = createSlice({
