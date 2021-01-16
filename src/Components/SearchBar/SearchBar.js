@@ -2,9 +2,14 @@ import React, { useState } from 'react';
 import { termAdded, fetchResults } from '../Redux/PostsSlice';
 import store from "../Redux/Store";
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { sortByAdded, postFromAdded } from '../Redux/FilterSlice';
 
 function SearchBar(){
     const [input, setInput] = useState('');
+
+    const sortBy = useSelector(state => state.filters.sortBy);
+    const postsFrom = useSelector(state => state.filters.postsFrom);
 
     const handleChange = (e) => {
         setInput(e.target.value);
@@ -25,6 +30,18 @@ function SearchBar(){
         store.dispatch(fetchResults())
         
         setInput('')
+
+        if(sortBy !== "Relevance" && postsFrom !== "All Time"){
+            store.dispatch(sortByAdded("Relevance"));
+            store.dispatch(postFromAdded("All Time"));
+        } else if (sortBy !== "Relevance" && postsFrom === "All Time"){
+            store.dispatch(sortByAdded("Relevance"));
+        } else if (sortBy === "Relevance" && postsFrom !== "All Time"){
+            store.dispatch(postFromAdded("All Time"));
+        } else {
+            return;
+        }
+
     }
 
     let search;

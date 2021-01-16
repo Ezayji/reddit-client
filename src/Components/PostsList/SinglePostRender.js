@@ -29,6 +29,7 @@ const SinglePostRender = ({ post }) => {
                 </div>
                 <div className="content">
                     <h1>{post.data.title}</h1>
+                    <p><span>{post.data.subreddit_name_prefixed}</span></p>
                     {selfText}
                     <Image post={post} />
                     <a className="url" href={post.data.url} >{link}...</a>

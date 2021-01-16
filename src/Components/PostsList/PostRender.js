@@ -16,13 +16,16 @@ const PostRender = ({ post }) => {
             </div>
             <div className="content">
                 <h1>{post.data.title}</h1>
+                <p><span>{post.data.subreddit_name_prefixed}</span></p>
                 <Image post={post} />
                 <div>
                     <p className="posted"><TimeAgo date={date} /> | <span>{post.data.author}</span> | {post.data.num_comments} comments</p>
                 </div>
-                <Link to={`/default/${post.data.id}`} className="check" >
-                    <p>Check the post</p>
-                </Link> 
+                <div className="check-div" >
+                    <Link to={`/default/${post.data.id}`} className="check" >
+                        <p>Check the post</p>
+                    </Link>
+                </div> 
             </div>
         </article>
     )

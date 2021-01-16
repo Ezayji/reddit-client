@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectAllPosts } from '../Redux/PostsSlice';
 import PostRender from './PostRender';
+import Filter from '../Filter/Filter';
 
 
 const SearchResults = () => {
@@ -13,6 +14,7 @@ const SearchResults = () => {
     const error = useSelector(state => state.posts.error);
     
     let heading
+    let filter;
     let content
 
     if(postStatus === 'finding'){
@@ -22,6 +24,7 @@ const SearchResults = () => {
         content = posts.data.children.map((post, i)=> (
                 <PostRender post={post} key={post.data.id} />
         ))
+        filter = <Filter />
     } else if (postStatus === 'error'){
         content = {error};
     } 
@@ -29,6 +32,7 @@ const SearchResults = () => {
     return(
         <div className='feed'>
             {heading}
+            {filter}
             {content}
         </div> 
     )

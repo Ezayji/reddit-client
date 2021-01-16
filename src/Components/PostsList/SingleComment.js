@@ -16,10 +16,10 @@ const SingleComment = ({ comment }) => {
     let ifReplies;
 
     const onClick = () => {
-        if(replies == false){
+        if(replies === false){
             setReplies(true);
             setValue('Hide Replies')
-        } else if (replies == true){
+        } else if (replies === true){
             setReplies(false);
             setValue('Show Replies')
         }

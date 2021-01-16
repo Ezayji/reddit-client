@@ -113,8 +113,12 @@ span {
     border: 2px solid #4e04af;
 }
 
-.results-for {
+.results-for, form {
     background-color:#0d1117c0;
+    
+}
+
+.results-for{
     border: 3px solid #6a04ee;
 }
 
@@ -123,6 +127,53 @@ span {
     width: 35%;
 }
 
+/* Filter */
+
+.filter-div{
+    width: 35%;
+    display: flex;
+    
+}
+
+form{
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+label {
+    display: flex;
+    align-items: center;
+}
+
+.filter-div input, label, select {
+    margin: 3px 0px;
+}
+
+.filter-div input{
+    margin-right: 5px;
+}
+
+label, select{
+    margin-left: 5px;
+}
+
+.label-select-div{
+    display: flex;
+}
+
+select{
+    font-family: 'Rubik';
+    color: #e7e7e7;
+    background-color: transparent;
+    border-radius: 5px;
+}
+
+option{
+    color: #181e27;
+}
 
 /* Feed */
 
@@ -231,6 +282,7 @@ span {
     margin-top: 15px;
     color: #ffffffbe;
     font-size: 13px;
+    width: 140px;
 }
 .thumbnail {
     margin-top: 10px;
@@ -239,9 +291,12 @@ span {
     width: 140px;
 }
 
+.check-div {
+    width: 151px;
+}
+
 .check{
     text-decoration: none;
-    width: 151px;
 }
 
 .check p:hover, .find:hover {
