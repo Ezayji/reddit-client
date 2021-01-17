@@ -16,7 +16,7 @@ const Awards = ({ awards }) => {
         award_bar = (
             awards.map((award, i) => (
                 <div className="award" key={i} >
-                    <img src={award.icon_url} height="16px" width="16px" alt={award.description} />
+                    <img src={award.icon_url} height="16px" width="16px" alt={award.description} title={award.description} />
                     {count[i] > 1 && <p>{count[i]}</p>}
                 </div>
             ))

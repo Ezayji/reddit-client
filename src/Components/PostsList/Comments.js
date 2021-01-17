@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import SingleComment from './SingleComment';
 
+import CommentsSkeleton from '../Skeletons/CommentsSkeleton';
+
 const Content = ({ url }) => {
     const [comments, setComments] = useState(null);
     useEffect(() => {
@@ -13,15 +15,24 @@ const Content = ({ url }) => {
         fetchComments();
     }, [])
     
+    let commentsRender;
+
     if(!comments){
-        return <h1>Loading</h1>
+        commentsRender = Array(5).fill().map((item, i) => (
+            <CommentsSkeleton />
+        ))
+        
+    } else {
+        commentsRender = (
+            comments[1].data.children.map((comment, i) => (
+                <SingleComment comment={comment} key={i} />
+            ))
+        )
     }
 
     return(
         <div className="comments">
-            {comments[1].data.children.map((comment, i) => (
-                <SingleComment comment={comment} key={i} />
-            ))}
+            {commentsRender}
         </div>
     )
 }

@@ -25,7 +25,7 @@ const PostRender = ({ post }) => {
                     <Link to={`/default/${post.data.id}`} className="check" >
                         <p>Check the post</p>
                     </Link>
-                </div> 
+                </div>  
             </div>
         </article>
     )

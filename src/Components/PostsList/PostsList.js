@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectAllPosts, fetchInitialPosts } from '../Redux/PostsSlice';
 import PostRender from './PostRender';
 
+import PostsListSkeleton from '../Skeletons/PostsListSkeleton';
+
 import store from '../Redux/Store';
 
 
@@ -19,13 +21,12 @@ function PostsList(){
         }
     }, [postStatus, dispatch])
 
-    // if(postStatus === 'idle') {}
-    // postStatus, dispatch
-
     let content
 
     if(postStatus === 'loading'){
-        content = <div>Loading...</div>
+        content = Array(10).fill().map((item, i) => (
+            <PostsListSkeleton />
+        ))
     } else if (postStatus === 'succeeded'){
         content = posts.data.children.map((post, i)=> (
                 <PostRender post={post} key={post.data.id} />
@@ -42,3 +43,5 @@ function PostsList(){
 }
 
 export default PostsList;
+
+// <div>Loading...</div>
