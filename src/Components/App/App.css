@@ -405,6 +405,23 @@ label p{
     width: 90% !important;
 }
 
+.award, .awards, .author_awards{
+    display: flex;
+}
+
+.awards {
+    margin-left: 8px;
+}
+
+.award{
+    font-family: 'Titillium Web' !important;
+    margin-right: 4px;
+}
+
+.author_awards{
+    margin-top: 5px;
+}
+
 /* Reply */
 
 .reply {
@@ -435,5 +452,5 @@ label p{
 }
 
 .show-replies:hover {
-    background-color: #0d1117a6;
+    background-color: #0d1117c4;
 }

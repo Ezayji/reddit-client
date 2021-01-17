@@ -2,7 +2,7 @@ import TimeAgo from 'react-timeago';
 import numeral from 'numeral';
 import Image from './Preview';
 import { Link } from 'react-router-dom';
-
+ 
 const PostRender = ({ post }) => {
     const upVotes = numeral(post.data.ups).format('0a');
     const date = new Date(post.data.created_utc * 1000);

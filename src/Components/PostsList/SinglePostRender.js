@@ -1,6 +1,7 @@
 import TimeAgo from 'react-timeago';
 import numeral from 'numeral';
 import Image from './Preview';
+import Awards from './Awards';
 
 import Comments from './Comments';
 
@@ -18,7 +19,7 @@ const SinglePostRender = ({ post }) => {
     } else {
         selfText = null;
     }
-
+ 
     return (
         <div className="singlepost">
             <article className="post" key={post.data.id}>
@@ -29,12 +30,15 @@ const SinglePostRender = ({ post }) => {
                 </div>
                 <div className="content">
                     <h1>{post.data.title}</h1>
-                    <p><span>{post.data.subreddit_name_prefixed}</span></p>
+                    <div className="author_awards">
+                        <p>By <span>{post.data.author}</span></p>
+                        <Awards awards={post.data.all_awardings} />
+                    </div>
                     {selfText}
                     <Image post={post} />
                     <a className="url" href={post.data.url} >{link}...</a>
                     <div>
-                        <p className="posted"><TimeAgo date={date} /> | <span>{post.data.author}</span> | {post.data.num_comments} comments</p>
+                        <p className="posted"><TimeAgo date={date} /> | <span>{post.data.subreddit_name_prefixed}</span> | {post.data.num_comments} comments</p>
                     </div>
                 </div>
             </article>
@@ -44,3 +48,4 @@ const SinglePostRender = ({ post }) => {
 }
 
 export default SinglePostRender;
+// <span>{post.data.author}</span>

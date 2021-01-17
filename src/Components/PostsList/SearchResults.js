@@ -27,7 +27,7 @@ const SearchResults = () => {
         filter = <Filter />
     } else if (postStatus === 'error'){
         content = {error};
-    } 
+    }  
  
     return(
         <div className='feed'>
