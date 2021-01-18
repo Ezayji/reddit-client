@@ -124,13 +124,13 @@ span {
 
 .results-for-div{
     text-align: center;
-    width: 35%;
+    width: 100%;
 }
 
 /* Filter */
 
 .filter-div{
-    width: 35%;
+    width: 100%;
     display: flex;
     
 }
@@ -213,6 +213,7 @@ label p{
 }
 
 /* Feed */
+
 /*
 .feed-div{
     width: 100%;

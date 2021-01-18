@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     sortBy: "Relevance",
-    postsFrom: "all"
+    postsFrom: "all",
+    type: "link"
 };
 
 const filterSlice = createSlice({
@@ -14,9 +15,12 @@ const filterSlice = createSlice({
         },
         postFromAdded(state,action){
             state.postsFrom = action.payload
+        },
+        typeAdded(state, action) {
+            state.type = action.payload
         }
     }
 })
 
 export default filterSlice.reducer;
-export const { sortByAdded, postFromAdded } = filterSlice.actions;
+export const { sortByAdded, postFromAdded, typeAdded } = filterSlice.actions;

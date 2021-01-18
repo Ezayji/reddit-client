@@ -33,7 +33,7 @@ const SearchResults = () => {
     } else if (postStatus === 'error'){
         content = {error};
     }  
- 
+
     return(
         <div className='feed'>
             <div className="feed-div" >
