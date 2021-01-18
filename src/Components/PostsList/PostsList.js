@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectAllPosts, fetchInitialPosts } from '../Redux/PostsSlice';
 import PostRender from './PostRender';
 
+import {statusAdded} from '../Redux/SubReditPostsSlice';
+
 import MainPageFilter from '../Filter/MainPageFilter';
 import FeaturedSubs from './FeaturedSubs';
 
@@ -20,7 +22,8 @@ function PostsList(){
 
     useEffect(() => {
         if(postStatus === 'idle' || postStatus === 'done') {
-        store.dispatch(fetchInitialPosts());
+            store.dispatch(statusAdded('idle'));
+            store.dispatch(fetchInitialPosts());
         }
     }, [postStatus, dispatch])
 

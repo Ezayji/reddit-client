@@ -22,6 +22,9 @@ const subRedditSlice = createSlice({
     reducers: {
         subRedditAdded(state, action) {
             state.subReddit = action.payload
+        },
+        statusAdded(state, action) {
+            state.status = action.payload
         }
     },
     extraReducers: {
@@ -39,14 +42,13 @@ const subRedditSlice = createSlice({
     }
 });
 
-export const { subRedditAdded } = subRedditSlice.actions;
+export const { subRedditAdded, statusAdded } = subRedditSlice.actions;
 export default subRedditSlice.reducer;
 
-export const selectAllSubPosts = (state) => state.posts.posts;
-
+export const selectAllSubPosts = (state) => state.community.posts;
 export const selectSubPostById = (state, postId) => {
     
-    let posts = state.posts.posts.data.children;
+    let posts = state.community.posts.data.children;
 
     let nr = 0;
 

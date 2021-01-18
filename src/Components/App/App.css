@@ -541,6 +541,13 @@ label p{
     width: 100%;
     display: flex;
     background-color: #0d1117d8;
+    line-height: 1.15;
+    letter-spacing: 1px;
+}
+
+.to-sub-posts{
+    color: #ffffffbe;
+    text-decoration: none;
 }
 
 .sub-image-div{
