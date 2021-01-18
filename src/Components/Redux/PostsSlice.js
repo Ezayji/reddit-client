@@ -4,13 +4,17 @@ const initialState = {
     posts: [],
     status: 'idle',
     error: null,
-    term: ''
+    term: '',
+    category: 'best'
 }
 
-export const fetchInitialPosts = createAsyncThunk('posts/fetchInitialPosts', async () => {
-    const url = 'https://www.reddit.com/r/EarthPorn.json?limit=50';
+export const fetchInitialPosts = createAsyncThunk('posts/fetchInitialPosts', async (_, { getState }) => {
+    const category = getState().posts.category
+    
+    const url = `https://www.reddit.com/${category}.json?limit=50`;
     const posts = await fetch(url);
     const jsonResponse = await posts.json()
+    console.log(url);
     return jsonResponse;
 })
 
@@ -34,6 +38,12 @@ const postsSlice = createSlice({
     reducers: {
         termAdded(state, action) {
             state.term = action.payload
+        },
+        categoryAdded(state, action) {
+            state.category = action.payload
+        },
+        statusAdded(state, action) {
+            state.status = action.payload
         }
     },
     extraReducers: {
@@ -64,7 +74,7 @@ const postsSlice = createSlice({
 
 
 
-export const { termAdded } = postsSlice.actions
+export const { termAdded, categoryAdded, statusAdded } = postsSlice.actions
 export default postsSlice.reducer
 
 export const selectAllPosts = (state) => state.posts.posts;

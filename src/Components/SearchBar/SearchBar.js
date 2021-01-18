@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { termAdded, fetchResults } from '../Redux/PostsSlice';
+import { termAdded, fetchResults, categoryAdded } from '../Redux/PostsSlice';
 import store from "../Redux/Store";
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { sortByAdded, postFromAdded } from '../Redux/FilterSlice';
+
 
 
 
@@ -26,6 +27,8 @@ function SearchBar(){
         const improved = splitInput.map(word => word = word + '%20');
     
         const search = improved.join('');
+
+        store.dispatch(categoryAdded('best'))
     
         store.dispatch(termAdded(search));
     

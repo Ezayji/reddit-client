@@ -22,7 +22,7 @@ const SinglePostRender = ({ post }) => {
  
     return (
         <div className="singlepost">
-            <article className="post" key={post.data.id}>
+            <article className="post single" key={post.data.id}>
                 <div className="votes">
                     <div className="arrow arrowUpMargin"></div>
                     <p className="ups">{upVotes}</p>

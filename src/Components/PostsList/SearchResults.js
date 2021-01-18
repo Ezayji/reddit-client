@@ -36,9 +36,11 @@ const SearchResults = () => {
  
     return(
         <div className='feed'>
-            {heading}
-            {filter}
-            {content}
+            <div className="feed-div" >
+                {heading}
+                {filter}
+                {content}
+            </div>
         </div> 
     )
 }

@@ -3,6 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectAllPosts, fetchInitialPosts } from '../Redux/PostsSlice';
 import PostRender from './PostRender';
 
+import MainPageFilter from '../Filter/MainPageFilter';
+import FeaturedSubs from './FeaturedSubs';
+
 import PostsListSkeleton from '../Skeletons/PostsListSkeleton';
 
 import store from '../Redux/Store';
@@ -21,13 +24,15 @@ function PostsList(){
         }
     }, [postStatus, dispatch])
 
+    let mainPageFilter = <MainPageFilter />;
     let content
-
+  
     if(postStatus === 'loading'){
         content = Array(10).fill().map((item, i) => (
             <PostsListSkeleton />
         ))
     } else if (postStatus === 'succeeded'){
+        
         content = posts.data.children.map((post, i)=> (
                 <PostRender post={post} key={post.data.id} />
         ))
@@ -36,9 +41,14 @@ function PostsList(){
     } 
 
     return(
-        <div className='feed'>
-            {content}
-        </div> 
+        <div className='feed main'>
+            <div className="placeholder"></div>
+            <div className="feed-div" >
+                {mainPageFilter}
+                {content}
+            </div>
+            <FeaturedSubs />
+        </div>
     )
 }
 

@@ -22,4 +22,16 @@
         width: 90%;
     }
 
+    .mainpage-filter {
+        width: 90%;
+    }
+
+    .feed-div{
+        width: 100%;
+    }
+
+    .featured-subs, .placeholder{
+        display: none;
+    }
+
 }

@@ -189,20 +189,73 @@ label p{
     font-size: 14px;
 }
 
-.submit:hover {
+.submit:hover, .mainpage-filter button:hover {
     background-color:#0d1117c0;
 }
 
-/* Feed */
+/* Main page filter */
 
+.mainpage-filter {
+    width: 100%;
+}
+
+.mainpage-filter form {
+    margin-top: 0;
+}
+
+.mainpage-filter button{
+    font-family: 'Rubik';
+    font-size: 18px;
+    color: #e7e7e7;
+    background-color: transparent;
+    border: 2px solid #6a04ee;
+    cursor: pointer;
+}
+
+/* Feed */
+/*
+.feed-div{
+    width: 100%;
+    display: flex;
+    align-content: space-around;
+    justify-content: center;
+}
+*/
 .feed {
     width: 100%;
     margin-top: 60px;
     display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.feed-div{
+    width: 35%;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    padding: 10px 0;
+}
+
+.featured-subs{
+    background-color:#0d1117c0;
+    margin-left: 15px;
+    height: 375px;
+}
+
+.placeholder{
+    width: 260px;
+}
+
+.subs{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.feat-sub{
+    margin: 10px;
 }
 
 /* Posts List Content */
@@ -249,11 +302,15 @@ label p{
 .post {
     background-color: #0d1117;
     margin: 10px 0px;
-    width: 35%;
+    width: 100%;
     display: flex;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0px 0px 5px #2d0364;
+}
+
+.single{
+    width: 35%;
 }
 
 .posted, .check{
@@ -420,6 +477,7 @@ label p{
 
 .author_awards{
     margin-top: 5px;
+    flex-wrap: wrap;
 }
 
 /* Reply */
