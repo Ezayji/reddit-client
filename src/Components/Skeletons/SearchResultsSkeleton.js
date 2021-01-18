@@ -6,7 +6,7 @@ export const ResultsForSkeleton = () => {
         <div className="results-for-div" >
             <h1>
                 <SkeletonTheme color="#181e27" highlightColor="#2d0364" >
-                    <Skeleton height={62} width={`100%`} />
+                    <Skeleton height={100} width={`100%`} />
                 </SkeletonTheme>
             </h1>
         </div>

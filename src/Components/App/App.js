@@ -16,8 +16,9 @@ function App() {
         <Header />
         <Switch>
           <Route path="/" exact component={PostsList} />
-          <Route path="/default/:id" exact component={Post} />
+          <Route path="/post/:id" exact component={Post} />
           <Route path="/search/:id" exact component={SearchResults} />
+          <Route path="/subreddit/:id" />
         </Switch>
       </div>
     </Router>

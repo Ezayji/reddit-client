@@ -22,7 +22,7 @@ const PostRender = ({ post }) => {
                     <p className="posted"><TimeAgo date={date} /> | <span>{post.data.author}</span> | {post.data.num_comments} comments</p>
                 </div>
                 <div className="check-div" >
-                    <Link to={`/default/${post.data.id}`} className="check" >
+                    <Link to={`/post/${post.data.id}`} className="check" >
                         <p>Check the post</p>
                     </Link>
                 </div>  

@@ -31,6 +31,9 @@ body {
     
     color: #ffffffbe;
     font-family: 'Rubik';
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
 }
 
 h1 {
@@ -125,6 +128,7 @@ span {
 .results-for-div{
     text-align: center;
     width: 100%;
+    box-shadow: 0px 0px 5px #2d0364;
 }
 
 /* Filter */
@@ -141,6 +145,7 @@ form{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    box-shadow: 0px 0px 5px #2d0364;
 }
 
 label {
@@ -189,21 +194,25 @@ label p{
     font-size: 14px;
 }
 
-.submit:hover, .mainpage-filter button:hover {
+.submit:hover, .mainpage-filter button:hover, .typefilter-div button:hover {
     background-color:#0d1117c0;
 }
 
-/* Main page filter */
+/* Main page filter and Type Filter */
 
-.mainpage-filter {
+.mainpage-filter, .typefilter-div {
     width: 100%;
+}
+
+.mainpage-filter{
+    box-shadow: 0px 0px 5px #2d0364;
 }
 
 .mainpage-filter form {
     margin-top: 0;
 }
 
-.mainpage-filter button{
+.mainpage-filter button, .typefilter-div button{
     font-family: 'Rubik';
     font-size: 18px;
     color: #e7e7e7;
@@ -211,6 +220,19 @@ label p{
     border: 2px solid #6a04ee;
     cursor: pointer;
 }
+
+.mainpage-filter button{
+    width: 20%;
+}
+
+.typefilter-div button{
+    width: 50%;
+}
+
+.typefilter-div form{
+    box-shadow: 0px 0px 5px #2d0364;
+}
+
 
 /* Feed */
 
@@ -242,6 +264,7 @@ label p{
     background-color:#0d1117c0;
     margin-left: 15px;
     height: 375px;
+    box-shadow: 0px 0px 5px #2d0364;
 }
 
 .placeholder{
@@ -397,9 +420,6 @@ label p{
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    hyphens: auto;
 }
 
 .self-text{
@@ -447,7 +467,7 @@ label p{
     margin-bottom: 10px;
 }
 
-.comment-creator span{
+.comment-creator span, .subreddit span{
     text-align: center;
     background-color: #0d1117;
     padding: 0px 9px;
@@ -512,4 +532,41 @@ label p{
 
 .show-replies:hover {
     background-color: #0d1117c4;
+}
+
+/* SubReddit list */
+
+.subreddit{
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    background-color: #0d1117d8;
+}
+
+.sub-image-div{
+    background-color: #0d1117;
+}
+
+.subreddit img{
+    margin: 12px 5px;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+}
+
+.sub-name, .sub-members{
+    margin: 0px 15px;
+}
+
+.sub-name{
+    font-size: 18px;
+    margin-top: 15px;
+}
+
+.sub-members{
+    margin-top: 5px;
+}
+
+.sub-desc{
+    margin: 15px 15px;
 }

@@ -22,7 +22,7 @@
         width: 90%;
     }
 
-    .mainpage-filter {
+    .mainpage-filter, .typefilter-div {
         width: 90%;
     }
 
@@ -34,4 +34,7 @@
         display: none;
     }
 
+    .subreddit{
+        width: 90%;
+    }
 }

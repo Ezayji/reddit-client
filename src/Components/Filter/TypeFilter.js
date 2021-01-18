@@ -1,5 +1,6 @@
 import { typeAdded } from '../Redux/FilterSlice';
 import store from '../Redux/Store';
+import { fetchResults } from '../Redux/PostsSlice';
 
 import { useSelector } from 'react-redux';
 
@@ -11,6 +12,7 @@ const TypeFilter = () => {
         e.preventDefault();
         if(currentType !== e.target.value){
             store.dispatch(typeAdded(e.target.value))
+            store.dispatch(fetchResults());
         }
     }
     
@@ -23,3 +25,5 @@ const TypeFilter = () => {
         </div>
     )
 }
+
+export default TypeFilter;
