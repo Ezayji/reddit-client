@@ -7,6 +7,7 @@ import Filter from '../Filter/Filter';
 import TypeFilter from '../Filter/TypeFilter';
 
 import PostsListSkeleton from '../Skeletons/PostsListSkeleton';
+import SubRedditListSkeleton from '../Skeletons/SubRedditListSkeleton';
 import {ResultsForSkeleton}  from '../Skeletons/SearchResultsSkeleton'
 
 const SearchResults = () => {
@@ -24,10 +25,15 @@ const SearchResults = () => {
     let content
     let type_Filter;
 
-    if(postStatus === 'finding'){
+    if(postStatus === 'finding' && currentType === 'link'){
         heading = <ResultsForSkeleton />
         content = Array(10).fill().map((item, i) => (
             <PostsListSkeleton key={i} />
+        ))
+    } else if (postStatus === 'finding' && currentType === 'sr'){
+        heading = <ResultsForSkeleton />
+        content = Array(10).fill().map((item, i) => (
+            <SubRedditListSkeleton key={i} />
         ))
     } else if (postStatus === 'done' && currentType === 'link'){
         heading = <div className="results-for-div"><h1 className="results-for">Search results for "{searchTerm.replaceAll("%20", " ").trim()}"</h1></div>

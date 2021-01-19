@@ -32,7 +32,7 @@ function PostsList(){
   
     if(postStatus === 'loading'){
         content = Array(10).fill().map((item, i) => (
-            <PostsListSkeleton />
+            <PostsListSkeleton key={i} />
         ))
     } else if (postStatus === 'succeeded'){
         

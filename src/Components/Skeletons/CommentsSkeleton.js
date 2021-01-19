@@ -1,4 +1,3 @@
-import { render } from '@testing-library/react';
 import Skeleton, {SkeletonTheme} from 'react-loading-skeleton';
 
 const CommentsSkeleton = () => {

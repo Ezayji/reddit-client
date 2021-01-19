@@ -1,8 +1,6 @@
-
-
 import Skeleton, {SkeletonTheme} from 'react-loading-skeleton';
 
-const PostsListSkeleton = ({ key }) => {
+const PostsListSkeleton = () => {
     return (
         
         <article className="post" >

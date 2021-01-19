@@ -9,8 +9,15 @@ import store from '../Redux/Store';
 
 
 const SubRedditPostsList = () => {
+    
     const posts = useSelector(selectAllSubPosts);
-    const subName = useSelector(state => state.community.posts.data.children[0].data.subreddit_name_prefixed);
+    const subName = useSelector(state => {
+        if(state.community.posts.data){
+            return state.community.posts.data.children[0].data.subreddit_name_prefixed
+        } else {
+            return null
+        }
+    });
 
     const postStatus = useSelector(state => state.community.status);
     const error = useSelector(state => state.community.error);
@@ -20,7 +27,7 @@ const SubRedditPostsList = () => {
             store.dispatch(fetchSubPosts());
         }
     }, [postStatus])
-    
+
     let header;
     let content;
 
