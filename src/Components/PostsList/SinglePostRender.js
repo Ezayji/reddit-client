@@ -36,7 +36,7 @@ const SinglePostRender = ({ post }) => {
                     </div>
                     {selfText}
                     <Image post={post} />
-                    <a className="url" href={post.data.url} >{link}...</a>
+                    <a className="url" href={post.data.url} target="_blank" rel="noreferrer noopener" >{link}...</a>
                     <div>
                         <p className="posted"><TimeAgo date={date} /> | <span>{post.data.subreddit_name_prefixed}</span> | {post.data.num_comments} comments</p>
                     </div>

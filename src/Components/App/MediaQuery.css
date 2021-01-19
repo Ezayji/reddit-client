@@ -38,3 +38,37 @@
         width: 90%;
     }
 }
+
+@media only screen and (min-width: 769px) and (max-width: 1280px){
+    .post {
+        width: 60%;
+    }
+
+    .comments{
+        width: 60%;
+    }
+
+    .results-for-div{
+        width: 60%;
+    }
+
+    .filter-div{
+        width: 60%;
+    }
+
+    .mainpage-filter, .typefilter-div {
+        width: 60%;
+    }
+
+    .feed-div{
+        width: 100%;
+    }
+
+    .featured-subs, .placeholder{
+        display: none;
+    }
+
+    .subreddit{
+        width: 60%;
+    }
+}

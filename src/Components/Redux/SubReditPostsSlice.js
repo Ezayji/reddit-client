@@ -10,7 +10,7 @@ const initialState = {
 export const fetchSubPosts = createAsyncThunk('subreddit/fetchSubPosts', async (_, { getState }) => {
     const sub = getState().community.subReddit;
 
-    const url = `https://www.reddit.com/r/${sub}.json?limit=50`;
+    const url = `https://www.reddit.com/r/${sub}.json?limit=200`;
     const posts = await fetch(url);
     const jsonResponse = await posts.json();
     return jsonResponse;

@@ -10,7 +10,7 @@ const Image = ({ post }) => {
 
         return (
             <div className="link">
-                <a className="url" href={post.data.url} >{link}...</a>
+                <a className="url" href={post.data.url} target="_blank" rel="noreferrer noopener" >{link}...</a>
                 <img src={thumbnail} alt={post.data.title} className="thumbnail" />
             </div>
         )
@@ -53,7 +53,7 @@ const Image = ({ post }) => {
 
         return (
             <div className="link">
-                <a className="url" href={post.data.url} >{link}...</a>
+                <a className="url" href={post.data.url} target="_blank" rel="noreferrer noopener" >{link}...</a>
                 <img src={defthumb} alt={post.data.title} className="thumbnail" />
             </div>
         )
@@ -64,7 +64,7 @@ const Image = ({ post }) => {
 
         return (
             <div className="link">
-                <a className="url" href={post.data.url} >{link}...</a>
+                <a className="url" href={post.data.url} target="_blank" rel="noreferrer noopener" >{link}...</a>
                 <img src={thumbnail} alt={post.data.title} className="thumbnail" />
             </div>
         )
