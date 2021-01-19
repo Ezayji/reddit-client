@@ -32,7 +32,7 @@ const Filter = () => {
     let input;
     let postsSelect;
 
-    if(sortBy !== sort && postsFrom !== from || sortBy !== sort && postsFrom === from || sortBy === sort && postsFrom !== from){
+    if((sortBy !== sort && postsFrom !== from) || (sortBy !== sort && postsFrom === from) || (sortBy === sort && postsFrom !== from)){
         input = <input className="submit" type="submit" value="Filter" />
     } else {
         input = null;

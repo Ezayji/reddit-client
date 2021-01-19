@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { selectAllPosts } from '../Redux/PostsSlice';
 import PostRender from './PostRender';
@@ -6,11 +6,16 @@ import CommunityList from './CommunityList';
 import Filter from '../Filter/Filter';
 import TypeFilter from '../Filter/TypeFilter';
 
+import store from '../Redux/Store';
+import { termAdded, fetchResults } from '../Redux/PostsSlice';
+
 import PostsListSkeleton from '../Skeletons/PostsListSkeleton';
 import SubRedditListSkeleton from '../Skeletons/SubRedditListSkeleton';
 import {ResultsForSkeleton}  from '../Skeletons/SearchResultsSkeleton'
 
-const SearchResults = () => {
+const SearchResults = ({ match }) => {
+    const urlTerm = match.params.id.replaceAll(' ', '%20');
+    const matchTerm = urlTerm.concat('%20');
 
     const posts = useSelector(selectAllPosts);
 
@@ -20,6 +25,13 @@ const SearchResults = () => {
     const postStatus = useSelector(state => state.posts.status);
     const error = useSelector(state => state.posts.error);
     
+    useEffect(() => {
+        if((matchTerm !== searchTerm && postStatus === 'done') || (matchTerm === searchTerm && postStatus === 'succeeded')){
+            store.dispatch(termAdded(matchTerm))
+            store.dispatch(fetchResults());
+        }
+    }, [matchTerm, postStatus])
+
     let heading
     let filter;
     let content
