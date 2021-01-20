@@ -21,6 +21,7 @@
 /* Universal Styles */
 
 body {
+    
     background: url('../../wallpaper.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -587,6 +588,10 @@ label p{
 
 .sub-desc{
     margin: 15px 15px;
+}
+
+.to-sub-posts p {
+    display: inline-block;
 }
 
 /*

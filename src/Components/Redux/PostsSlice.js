@@ -11,7 +11,7 @@ const initialState = {
 export const fetchInitialPosts = createAsyncThunk('posts/fetchInitialPosts', async (_, { getState }) => {
     const category = getState().posts.category
     
-    const url = `https://www.reddit.com/${category}.json?limit=50`;
+    const url = `https://www.reddit.com/${category}.json?limit=200`;
     const posts = await fetch(url);
     const jsonResponse = await posts.json()
     console.log(url);
@@ -24,7 +24,7 @@ export const fetchResults = createAsyncThunk('posts/fetchResults', async (_, { g
     const type = getState().filters.type;
     
     const term = getState().posts.term; 
-    const url = `https://www.reddit.com/search.json?q=${term}&sort=${sortBy}&t=${postsFrom}&type=${type}`
+    const url = `https://www.reddit.com/search.json?q=${term}&sort=${sortBy}&t=${postsFrom}&type=${type}&limit=200`
     const response = await fetch(url);
     const jsonResponse = await response.json();
     console.log(url);

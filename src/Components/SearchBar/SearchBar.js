@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { termAdded, fetchResults, categoryAdded } from '../Redux/PostsSlice';
 import store from "../Redux/Store";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { sortByAdded, postFromAdded } from '../Redux/FilterSlice';
 import { statusAdded } from '../Redux/SubReditPostsSlice';
@@ -10,6 +10,8 @@ import { statusAdded } from '../Redux/SubReditPostsSlice';
 
 function SearchBar(){
     const [input, setInput] = useState('');
+
+    const location = useLocation();
 
     const sortBy = useSelector(state => state.filters.sortBy);
     const postsFrom = useSelector(state => state.filters.postsFrom);
@@ -58,6 +60,7 @@ function SearchBar(){
     }
 
     let search;
+    let searchBar;
 
     if(input){
         term.push(input);
@@ -72,10 +75,16 @@ function SearchBar(){
     } else {
         search = null;
     }
+
+    if(!location.pathname.includes("/post/")){
+        searchBar = <input className="search" type="text" placeholder="Search" onChange={handleChange} value={input} />
+    } else {
+        searchBar = null;
+    }
  
     return (
         <div className="sbar">
-            <input className="search" type="text" placeholder="Search" onChange={handleChange} value={input} />
+            {searchBar}
             {search}
         </div>
     )
