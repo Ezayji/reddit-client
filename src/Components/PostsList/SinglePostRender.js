@@ -1,9 +1,22 @@
 import TimeAgo from 'react-timeago';
 import numeral from 'numeral';
+import ReactMarkdown from 'react-markdown';
+import gfm from 'remark-gfm';
+import LinkRenderer from './LinkRenderer';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import {dark} from 'react-syntax-highlighter/dist/esm/styles/prism'
+
 import Image from './Preview';
 import Awards from './Awards';
 
 import Comments from './Comments';
+
+const renderers = {
+    link: LinkRenderer,
+    code: ({language, value}) => {
+        return <SyntaxHighlighter style={dark} language={language} children={value} />
+      }
+}
 
 const SinglePostRender = ({ post }) => {
     const upVotes = numeral(post.data.ups).format('0a');
@@ -15,7 +28,11 @@ const SinglePostRender = ({ post }) => {
     let selfText;
 
     if (Object.values(post.data.selftext).length > 0){
-        selfText = <p className="self-text">{post.data.selftext}</p>
+        selfText = (
+        <div className="self-text">
+            <ReactMarkdown plugins={[gfm]} children={post.data.selftext} renderers={renderers} />
+        </div>
+        )
     } else {
         selfText = null;
     }
@@ -36,7 +53,7 @@ const SinglePostRender = ({ post }) => {
                     </div>
                     {selfText}
                     <Image post={post} />
-                    <a className="url" href={post.data.url} target="_blank" rel="noreferrer noopener" >{link}...</a>
+                    
                     <div>
                         <p className="posted"><TimeAgo date={date} /> | <span>{post.data.subreddit_name_prefixed}</span> | {post.data.num_comments} comments</p>
                     </div>
@@ -49,3 +66,5 @@ const SinglePostRender = ({ post }) => {
 
 export default SinglePostRender;
 // <span>{post.data.author}</span>
+// <p>{post.data.selftext}</p>
+// <a className="url" href={post.data.url} target="_blank" rel="noreferrer noopener" >{link}...</a>

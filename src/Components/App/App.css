@@ -434,6 +434,10 @@ label p{
     width: 100%;
 }
 
+.self-text a, .markdown-comment a {
+    color: #6a04ee;
+}
+
 .comment-div{
     width: 100% !important;
     display: flex;
