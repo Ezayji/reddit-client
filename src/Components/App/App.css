@@ -132,6 +132,7 @@ span {
 .results-for-div{
     text-align: center;
     width: 100%;
+    color: #e7e7e7;
     box-shadow: 0px 0px 5px #2d0364;
 }
 
@@ -167,6 +168,7 @@ label {
 
 label, select{
     margin-left: 5px;
+    color: #e7e7e7;
 }
 
 .label-select-div{
@@ -175,9 +177,9 @@ label, select{
 
 select{
     font-family: 'Rubik';
-    color: #e7e7e7;
     background-color: transparent;
     border-radius: 5px;
+    outline: none;
 }
 
 option{
@@ -192,6 +194,7 @@ option{
     cursor: pointer;
     border-radius: 5px;
     overflow: hidden;
+    outline: none;
 }
 
 label p{
@@ -221,16 +224,19 @@ label p{
     font-size: 18px;
     color: #e7e7e7;
     background-color: transparent;
-    border: 2px solid #6a04ee;
+    outline: none;
     cursor: pointer;
 }
 
 .mainpage-filter button{
     width: 20%;
+    border: none;
+    
 }
 
 .typefilter-div button{
     width: 50%;
+    border: none;
 }
 
 .typefilter-div form{
@@ -261,7 +267,7 @@ label p{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: flex-start;
 }
 
 .featured-subs{
@@ -497,6 +503,7 @@ label p{
 
 .awards {
     margin-left: 8px;
+    flex-wrap: wrap;
 }
 
 .award{

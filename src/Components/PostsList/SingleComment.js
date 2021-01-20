@@ -6,16 +6,7 @@ import Reply from './Reply';
 
 import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
-import LinkRenderer from './LinkRenderer';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import {dark} from 'react-syntax-highlighter/dist/esm/styles/prism';
-
-const renderers = {
-    link: LinkRenderer,
-    code: ({language, value}) => {
-        return <SyntaxHighlighter style={dark} language={language} children={value} />
-      }
-}
+import { renderers } from './LinkRenderer';
 
 const SingleComment = ({ comment }) => {
     const [replies, setReplies] = useState(false);

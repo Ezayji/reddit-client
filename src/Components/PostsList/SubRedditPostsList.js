@@ -1,15 +1,18 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { selectAllSubPosts, fetchSubPosts } from '../Redux/SubReditPostsSlice';
+import { selectAllSubPosts, fetchSubPosts, subRedditAdded } from '../Redux/SubReditPostsSlice';
 import PostRender from './PostRender';
 
+import {ResultsForSkeleton}  from '../Skeletons/SearchResultsSkeleton'
 import PostsListSkeleton from '../Skeletons/PostsListSkeleton';
 
 import store from '../Redux/Store';
 
 
-const SubRedditPostsList = () => {
+const SubRedditPostsList = ({ match }) => {
     
+    const matchUrl = match.params.id;
+
     const posts = useSelector(selectAllSubPosts);
     const subName = useSelector(state => {
         if(state.community.posts.data){
@@ -19,19 +22,31 @@ const SubRedditPostsList = () => {
         }
     });
 
+    const subNameState = useSelector(state => {
+        if(state.community.subReddit){
+            return state.community.subReddit;
+        } else {
+            return null;
+        }
+    });
+
     const postStatus = useSelector(state => state.community.status);
     const error = useSelector(state => state.community.error);
     
     useEffect(() => {
-        if(postStatus === 'idle'){
+        if((subNameState !== matchUrl && postStatus === 'presented') || postStatus === 'idle'){
+            console.log(matchUrl);
+            console.log(subName);
+            store.dispatch(subRedditAdded(matchUrl))
             store.dispatch(fetchSubPosts());
         }
-    }, [postStatus])
+    }, [matchUrl, postStatus])
 
     let header;
     let content;
 
     if(postStatus === 'requesting'){
+        header = <ResultsForSkeleton />
         content = Array(10).fill().map((item, i) => (
             <PostsListSkeleton />
         ))

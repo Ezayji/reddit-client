@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { sortByAdded, postFromAdded } from '../Redux/FilterSlice';
 import { fetchResults } from '../Redux/PostsSlice';
@@ -11,6 +11,11 @@ const Filter = () => {
 
     const [sort, setSort] = useState(sortBy);
     const [from, setFrom] = useState(postsFrom);
+
+    useEffect(() => {
+        setSort(sortBy);
+        setFrom(postsFrom)
+    }, [sortBy, postsFrom])
     
     const onSubmit = (e) => {
         e.preventDefault();

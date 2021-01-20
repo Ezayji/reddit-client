@@ -19,11 +19,12 @@ const TypeFilter = () => {
     return(
         <div className="typefilter-div" >
             <form>
-                <button value='link' onClick={onClick} >Posts</button>
-                <button value='sr' onClick={onClick} >Communities</button>
+                <button value='link' onClick={onClick} style={{borderBottom: currentType === 'link' ? '2px solid #6a04ee' : 'none'}} >Posts</button>
+                <button value='sr' onClick={onClick} style={{borderBottom: currentType === 'sr' ? '2px solid #6a04ee' : 'none'}} >Communities</button>
             </form>
         </div>
     )
 }
 
 export default TypeFilter;
+/* borderBottom: currentType === 'link' ? '2px solid #6a04ee' : 'none' */
