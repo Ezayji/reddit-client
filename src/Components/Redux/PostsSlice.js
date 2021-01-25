@@ -11,7 +11,7 @@ const initialState = {
 export const fetchInitialPosts = createAsyncThunk('posts/fetchInitialPosts', async (_, { getState }) => {
     const category = getState().posts.category
     
-    const url = `https://www.reddit.com/${category}.json?limit=200`;
+    const url = `https://www.reddit.com/${category}.json?limit=50`;
     const posts = await fetch(url);
     const jsonResponse = await posts.json()
     console.log(url);

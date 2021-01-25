@@ -150,6 +150,7 @@ form{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
     box-shadow: 0px 0px 5px #2d0364;
 }
 
@@ -163,7 +164,7 @@ label {
 }
 
 .filter-div input{
-    margin-right: 5px;
+    margin: 5px;
 }
 
 label, select{
@@ -173,6 +174,7 @@ label, select{
 
 .label-select-div{
     display: flex;
+    flex-wrap: wrap;
 }
 
 select{
@@ -334,7 +336,10 @@ label p{
 }
 
 .post {
+    /*
     background-color: #0d1117;
+    */
+    background-color:#0d1117e1;
     margin: 10px 0px;
     width: 100%;
     display: flex;

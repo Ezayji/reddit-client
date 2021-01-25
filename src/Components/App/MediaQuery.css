@@ -37,6 +37,11 @@
     .subreddit{
         width: 90%;
     }
+
+    .mainpage-filter button{
+        font-size: 15px;
+    }
+    
 }
 
 @media only screen and (min-width: 769px) and (max-width: 1280px){
