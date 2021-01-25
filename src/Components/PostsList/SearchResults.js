@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectAllPosts } from '../Redux/PostsSlice';
 import PostRender from './PostRender';
@@ -14,6 +14,8 @@ import SubRedditListSkeleton from '../Skeletons/SubRedditListSkeleton';
 
 
 const SearchResults = ({ match }) => {
+    const [postsToLoad, setPostsToLoad] = useState(11);
+
     const urlTerm = match.params.id.replaceAll(' ', '%20');
     const matchTerm = urlTerm.concat('%20');
 
@@ -29,11 +31,18 @@ const SearchResults = ({ match }) => {
         if((matchTerm !== searchTerm && postStatus === 'done') || (matchTerm === searchTerm && postStatus === 'succeeded')){
             store.dispatch(termAdded(matchTerm))
             store.dispatch(fetchResults());
+            setPostsToLoad(11);
         }
     }, [matchTerm, postStatus])
 
+    const onClick = (e) => {
+        e.preventDefault();
+        setPostsToLoad(postsToLoad + 10);
+    }
+    
     let content
-
+    let button = postsToLoad <= posts.data.children.length && currentType !== 'sr'  ? <button className="load-more" onClick={onClick} >Load More</button> : null;
+    
     if(postStatus === 'finding' && currentType === 'link'){
         content = Array(10).fill().map((item, i) => (
             <PostsListSkeleton key={i} />
@@ -43,7 +52,7 @@ const SearchResults = ({ match }) => {
             <SubRedditListSkeleton key={i} />
         ))
     } else if (postStatus === 'done' && currentType === 'link'){
-        content = posts.data.children.map((post, i)=> (
+        content = posts.data.children.slice(0, postsToLoad).map((post, i) => (
                 <PostRender post={post} key={post.data.id} />
         ))
     } else if(postStatus === 'done' && currentType === 'sr'){
@@ -57,10 +66,11 @@ const SearchResults = ({ match }) => {
     return(
         <div className='feed'>
             <div className="feed-div" >
-                <div className="results-for-div"><h1 className="results-for">Search results for "{searchTerm.replaceAll("%20", " ").trim()}"</h1></div>
+                <div className="results-for-div bottom-border"><h1 className="results-for">Search results for "{searchTerm.replaceAll("%20", " ").trim()}"</h1></div>
                 <Filter />
                 <TypeFilter />
                 {content}
+                {button}
             </div>
         </div> 
     )

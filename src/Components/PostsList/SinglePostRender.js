@@ -15,7 +15,7 @@ const SinglePostRender = ({ post }) => {
 
     let link = post.data.url;
     if(link.length > 20) link = link.substring(0, 20);
-
+ 
     let selfText;
 
     if (Object.values(post.data.selftext).length > 0){

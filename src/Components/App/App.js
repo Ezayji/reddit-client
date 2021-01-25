@@ -8,13 +8,16 @@ import Post from '../PostsList/Post';
 import SearchResults from '../PostsList/SearchResults';
 import SubRedditPostsList from '../PostsList/SubRedditPostsList';
 
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+ 
 function App() {
   return (
     <Router>
       <div className="App">
         <Header />
+        <ScrollToTop />
         <Switch>
           <Route path="/" exact component={PostsList} />
           <Route path="/post/:id" exact component={Post} />

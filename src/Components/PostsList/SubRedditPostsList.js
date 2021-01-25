@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectAllSubPosts, fetchSubPosts, subRedditAdded } from '../Redux/SubReditPostsSlice';
 import PostRender from './PostRender';
@@ -10,6 +10,7 @@ import store from '../Redux/Store';
 
 
 const SubRedditPostsList = ({ match }) => {
+    const [postsToLoad, setPostsToLoad] = useState(11);
     
     const matchUrl = match.params.id;
 
@@ -42,6 +43,12 @@ const SubRedditPostsList = ({ match }) => {
         }
     }, [matchUrl, postStatus])
 
+    const onClick = (e) => {
+        e.preventDefault();
+        setPostsToLoad(postsToLoad + 10);
+    }
+
+    let button = postsToLoad < 200 ? <button className="load-more" onClick={onClick} >Load More</button> : null;
     let header;
     let content;
 
@@ -52,7 +59,7 @@ const SubRedditPostsList = ({ match }) => {
         ))
     } else if (postStatus === 'presented'){
         header = <div className="results-for-div"><h1 className="results-for">{subName}</h1></div>;
-        content = posts.data.children.map((post, i)=> (
+        content = posts.data.children.slice(0, postsToLoad).map((post, i)=> (
                 <PostRender post={post} key={post.data.id} />
         ))
     } else if (postStatus === 'error'){
@@ -64,6 +71,7 @@ const SubRedditPostsList = ({ match }) => {
             <div className="feed-div" >
                 {header}
                 {content}
+                {button}
             </div>
         </div>
     )
