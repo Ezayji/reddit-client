@@ -1,38 +1,25 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
 import SinglePostRender from './SinglePostRender';
-import { selectPostById } from '../Redux/PostsSlice';
-import { selectSubPostById } from '../Redux/SubReditPostsSlice';
-
 
 const Post = ({ match }) => {
+    const [post, setPost] = useState(null);
 
-    const subStatus = useSelector(state => state.community.status);
-    let mainPosts = useSelector((state) => selectPostById(state, match.params.id));
-    let subPosts = useSelector((state) => {
-        if(state.community.status !== 'idle'){
-            return selectSubPostById(state, match.params.id)
-        } else {
-            return null
-        }
-    }) 
+    useEffect(() => {
+        const plink = `https://www.reddit.com/${match.params.id}.json`;
+        async function fetchPost(){
+            const response = await fetch(plink);
+            const jsonResponse = await response.json();
+            console.log(jsonResponse);
+            setPost(jsonResponse[0].data.children[0]);
+        };
+        fetchPost();
+    }, []);
 
-    let post
-
-    if(subStatus === 'idle'){
-        post = mainPosts;
-    } else {
-        post = subPosts;
-    }
-
-    /*
-    const post = useSelector((state) => selectPostById(state, match.params.id));
-    */
     return(
         <div className="feed">
             <SinglePostRender post={post} key={match.params.id} />
         </div>
-    )
-}
+    );
+};
 
 export default Post;

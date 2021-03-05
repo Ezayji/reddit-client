@@ -5,6 +5,7 @@ import CommentsSkeleton from '../Skeletons/CommentsSkeleton';
 
 const Content = ({ url }) => {
     const [comments, setComments] = useState(null);
+    
     useEffect(() => {
         const clink = `https://www.reddit.com${url}.json?limit=200`
         async function fetchComments(){
@@ -13,7 +14,7 @@ const Content = ({ url }) => {
             setComments(jsonResponse);
         }
         fetchComments();
-    }, [])
+    }, [url])
     
     let commentsRender;
 

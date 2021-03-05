@@ -149,7 +149,7 @@ span {
 
 .results-for, form {
     background-color:#0d1117c0;
-    
+    backdrop-filter: blur(1px);
 }
 
 .results-for{
@@ -312,6 +312,7 @@ label p{
 
 .featured-subs{
     background-color:#0d1117c0;
+    backdrop-filter: blur(1px);
     margin-left: 15px;
     height: 375px;
     box-shadow: 0px 0px 5px #2d0364;
@@ -375,15 +376,17 @@ label p{
 
 .post {
     /*
-    background-color: #0d1117;
-    */
     background-color:#0d1117e1;
+    */
+    
     margin: 10px 0px;
     width: 100%;
     display: flex;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0px 0px 5px #2d0364;
+    background-color:#0d1117e1;
+    backdrop-filter: blur(2px);
 }
 
 .single{

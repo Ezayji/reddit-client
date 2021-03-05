@@ -1,3 +1,5 @@
+import PostsListSkeleton from '../Skeletons/PostsListSkeleton';
+
 import TimeAgo from 'react-timeago';
 import numeral from 'numeral';
 import ReactMarkdown from 'react-markdown';
@@ -10,26 +12,33 @@ import Awards from './Awards';
 import Comments from './Comments';
 
 const SinglePostRender = ({ post }) => {
-    const upVotes = numeral(post.data.ups).format('0a');
-    const date = new Date(post.data.created_utc * 1000);
 
-    let link = post.data.url;
-    if(link.length > 20) link = link.substring(0, 20);
- 
-    let selfText;
+    let content;
+    let commentUrl;
 
-    if (Object.values(post.data.selftext).length > 0){
-        selfText = (
-        <div className="self-text">
-            <ReactMarkdown plugins={[gfm]} children={post.data.selftext} renderers={renderers} />
-        </div>
-        )
+    if(post === null || post === undefined){
+        content = <PostsListSkeleton />
+        commentUrl = null;
     } else {
-        selfText = null;
-    }
+        commentUrl = post.data.permalink;
+        const upVotes = numeral(post.data.ups).format('0a');
+        const date = new Date(post.data.created_utc * 1000);
+
+        let link = post.data.url;
+        if(link.length > 20) link = link.substring(0, 20);
  
-    return (
-        <div className="singlepost">
+        let selfText;
+
+        if (Object.values(post.data.selftext).length > 0){
+            selfText = (
+            <div className="self-text">
+                <ReactMarkdown plugins={[gfm]} children={post.data.selftext} renderers={renderers} />
+            </div>
+            )
+        } else {
+            selfText = null;
+        };
+        content = (
             <article className="post single" key={post.data.id}>
                 <div className="votes">
                     <div className="arrow arrowUpMargin"></div>
@@ -50,12 +59,15 @@ const SinglePostRender = ({ post }) => {
                     </div>
                 </div>
             </article>
-            <Comments url={post.data.permalink} />
+        );
+    };
+ 
+    return (
+        <div className="singlepost">
+            {content}
+            <Comments url={commentUrl} />
         </div>
     )
 }
 
 export default SinglePostRender;
-// <span>{post.data.author}</span>
-// <p>{post.data.selftext}</p>
-// <a className="url" href={post.data.url} target="_blank" rel="noreferrer noopener" >{link}...</a>
