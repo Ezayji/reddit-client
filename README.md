@@ -1,1 +1,33 @@
 # Reddit Browsing Client
+### Created by Ezayji in January 2021
+## General info
+**Simple Reddit Browsing Client**<br/>
+Features:
+* View any post
+* Read comments under posts
+* Browse posts by keywords
+* Browse subreddits by keywords
+* Filter search results by age
+* Sort search results by 'Relevance', 'Hot', 'Top', 'New' or 'Comments'
+
+## Tehcnical Info
+The project is created with:
+* Javascript
+* React
+* Redux
+* HTML
+* CSS
+
+Fetch requests are made to **Reddit JSON API**
+
+# Setup
+For local hosting:
+* Clone the repository
+* Navigate to the root location using command line
+* Run 'npm install' to install all the packages
+> $ npm install
+* Run 'npm start' to start the app locally
+> $ npm start
+* The app should be accessible on 'http://localhost:3000/'
+
+**For live version visit :**
