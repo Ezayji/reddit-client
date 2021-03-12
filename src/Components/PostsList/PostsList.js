@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { selectAllPosts, fetchInitialPosts } from '../Redux/PostsSlice';
 import PostRender from './PostRender';
 
@@ -10,10 +10,8 @@ import FeaturedSubs from './FeaturedSubs';
 
 import PostsListSkeleton from '../Skeletons/PostsListSkeleton';
 
-import store from '../Redux/Store';
-
-
 function PostsList(){
+    const dispatch = useDispatch();
     const [postsToLoad, setPostsToLoad] = useState(11);
 
     const posts = useSelector(selectAllPosts);
@@ -22,8 +20,8 @@ function PostsList(){
 
     useEffect(() => {
         if(postStatus === 'idle' || postStatus === 'done') {
-            store.dispatch(statusAdded('idle'));
-            store.dispatch(fetchInitialPosts());
+            dispatch(statusAdded('idle'));
+            dispatch(fetchInitialPosts());
             setPostsToLoad(11);
         }
     }, [postStatus])

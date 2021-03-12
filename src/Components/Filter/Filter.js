@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { sortByAdded, postFromAdded } from '../Redux/FilterSlice';
 import { fetchResults } from '../Redux/PostsSlice';
 
-import store from '../Redux/Store';
-
 const Filter = () => {
+    const dispatch = useDispatch();
     const sortBy = useSelector(state => state.filters.sortBy);
     const postsFrom = useSelector(state => state.filters.postsFrom);
 
@@ -20,15 +19,15 @@ const Filter = () => {
     const onSubmit = (e) => {
         e.preventDefault();
         if(sortBy !== sort && postsFrom !== from){
-            store.dispatch(sortByAdded(sort));
-            store.dispatch(postFromAdded(from));
-            store.dispatch(fetchResults());
+            dispatch(sortByAdded(sort));
+            dispatch(postFromAdded(from));
+            dispatch(fetchResults());
         } else if (sortBy !== sort && postsFrom === from){
-            store.dispatch(sortByAdded(sort));
-            store.dispatch(fetchResults());
+            dispatch(sortByAdded(sort));
+            dispatch(fetchResults());
         } else if(sortBy === sort && postsFrom !== from){
-            store.dispatch(postFromAdded(from));
-            store.dispatch(fetchResults());
+            dispatch(postFromAdded(from));
+            dispatch(fetchResults());
         } else {
             return
         }

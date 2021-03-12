@@ -1,18 +1,16 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { categoryAdded, statusAdded } from '../Redux/PostsSlice';
 
-import store from '../Redux/Store';
-
-
 const MainPageFilter = () => {
+    const dispatch = useDispatch();
     const currentFilter = useSelector(state => state.posts.category);
 
     const onSubmit = (e) => {
         e.preventDefault();
         
         if(e.target.value !== currentFilter){
-            store.dispatch(categoryAdded(e.target.value));
-            store.dispatch(statusAdded('idle'));
+            dispatch(categoryAdded(e.target.value));
+            dispatch(statusAdded('idle'));
         } else {
             return
         }

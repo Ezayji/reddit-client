@@ -1,9 +1,17 @@
 import Skeleton, {SkeletonTheme} from 'react-loading-skeleton';
 
-const PostsListSkeleton = () => {
+const PostsListSkeleton = ({ name }) => {
+    let styleClass;
+
+    if(name){
+        styleClass = `post ${name}`;
+    } else {
+        styleClass = 'post'
+    }
+    
     return (
         
-        <article className="post" >
+        <article className={styleClass} >
             <div className="votes">
                 <div className="arrowUpMargin" >
                     <SkeletonTheme color="#0d1117" highlightColor="#2d0364" >

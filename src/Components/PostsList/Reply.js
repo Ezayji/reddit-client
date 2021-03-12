@@ -47,10 +47,3 @@ const Reply = ({ reply }) => {
 }
 
 export default Reply;
-/* 
-        <div className="markdown-comment" >
-            <ReactMarkdown plugins={[gfm]} children={reply.data.body} renderers={renderers} />
-        </div>
-
-        <p>{reply.data.body}</p>
-*/

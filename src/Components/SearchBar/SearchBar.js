@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import { termAdded, fetchResults, categoryAdded } from '../Redux/PostsSlice';
-import store from "../Redux/Store";
 import { Link, useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { sortByAdded, postFromAdded } from '../Redux/FilterSlice';
 import { statusAdded } from '../Redux/SubReditPostsSlice';
 
-
-
 function SearchBar(){
+    const dispatch = useDispatch();
     const [input, setInput] = useState('');
 
     const location = useLocation();
@@ -30,13 +28,13 @@ function SearchBar(){
     
         const search = improved.join('');
 
-        store.dispatch(statusAdded('idle'))
+        dispatch(statusAdded('idle'))
 
-        store.dispatch(categoryAdded('best'))
+        dispatch(categoryAdded('best'))
     
-        store.dispatch(termAdded(search));
+        dispatch(termAdded(search));
     
-        store.dispatch(fetchResults())
+        dispatch(fetchResults())
         
         setInput('')
     }
@@ -44,14 +42,14 @@ function SearchBar(){
     const onSearch = (e) => {
         e.preventDefault();
         if(sortBy !== "Relevance" && postsFrom !== "all"){
-            store.dispatch(sortByAdded("Relevance"));
-            store.dispatch(postFromAdded("all"));
+            dispatch(sortByAdded("Relevance"));
+            dispatch(postFromAdded("all"));
             searchActions();
         } else if (sortBy !== "Relevance" && postsFrom === "all"){
-            store.dispatch(sortByAdded("Relevance"));
+            dispatch(sortByAdded("Relevance"));
             searchActions();
         } else if (sortBy === "Relevance" && postsFrom !== "all"){
-            store.dispatch(postFromAdded("all"));
+            dispatch(postFromAdded("all"));
             searchActions();
         } else {
             searchActions();
@@ -91,5 +89,3 @@ function SearchBar(){
 }
 
 export default SearchBar;
-
-/* <button className="find" onClick={onSearch} /> */

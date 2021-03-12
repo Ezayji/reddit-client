@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { selectAllSubPosts, fetchSubPosts, subRedditAdded } from '../Redux/SubReditPostsSlice';
 import PostRender from './PostRender';
 
 import {ResultsForSkeleton}  from '../Skeletons/SearchResultsSkeleton'
 import PostsListSkeleton from '../Skeletons/PostsListSkeleton';
 
-import store from '../Redux/Store';
-
-
 const SubRedditPostsList = ({ match }) => {
+    const dispatch = useDispatch();
     const [postsToLoad, setPostsToLoad] = useState(11);
     
     const matchUrl = match.params.id;
@@ -36,10 +34,8 @@ const SubRedditPostsList = ({ match }) => {
     
     useEffect(() => {
         if((subNameState !== matchUrl && postStatus === 'presented') || postStatus === 'idle'){
-            console.log(matchUrl);
-            console.log(subName);
-            store.dispatch(subRedditAdded(matchUrl))
-            store.dispatch(fetchSubPosts());
+            dispatch(subRedditAdded(matchUrl))
+            dispatch(fetchSubPosts());
         }
     }, [matchUrl, postStatus])
 

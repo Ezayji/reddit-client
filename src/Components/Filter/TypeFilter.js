@@ -1,18 +1,17 @@
 import { typeAdded } from '../Redux/FilterSlice';
-import store from '../Redux/Store';
 import { fetchResults } from '../Redux/PostsSlice';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 const TypeFilter = () => {
-    
+    const dispatch = useDispatch();
     const currentType = useSelector(state => state.filters.type);
 
     const onClick = (e) => {
         e.preventDefault();
         if(currentType !== e.target.value){
-            store.dispatch(typeAdded(e.target.value))
-            store.dispatch(fetchResults());
+            dispatch(typeAdded(e.target.value))
+            dispatch(fetchResults());
         }
     }
     
@@ -27,4 +26,3 @@ const TypeFilter = () => {
 }
 
 export default TypeFilter;
-/* borderBottom: currentType === 'link' ? '2px solid #6a04ee' : 'none' */

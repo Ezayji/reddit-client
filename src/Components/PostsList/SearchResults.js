@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { selectAllPosts } from '../Redux/PostsSlice';
 import PostRender from './PostRender';
 import CommunityList from './CommunityList';
 import Filter from '../Filter/Filter';
 import TypeFilter from '../Filter/TypeFilter';
 
-import store from '../Redux/Store';
 import { termAdded, fetchResults } from '../Redux/PostsSlice';
 
 import PostsListSkeleton from '../Skeletons/PostsListSkeleton';
@@ -14,6 +13,7 @@ import SubRedditListSkeleton from '../Skeletons/SubRedditListSkeleton';
 
 
 const SearchResults = ({ match }) => {
+    const dispatch = useDispatch();
     const [postsToLoad, setPostsToLoad] = useState(11);
 
     const urlTerm = match.params.id.replaceAll(' ', '%20');
@@ -28,12 +28,12 @@ const SearchResults = ({ match }) => {
     const error = useSelector(state => state.posts.error);
     
     useEffect(() => {
-        if((matchTerm !== searchTerm && postStatus === 'done') || (matchTerm === searchTerm && postStatus === 'succeeded')){
-            store.dispatch(termAdded(matchTerm))
-            store.dispatch(fetchResults());
+        if((matchTerm !== searchTerm && postStatus === 'done') || (matchTerm === searchTerm && postStatus === 'succeeded') || (postStatus === 'idle')){
+            dispatch(termAdded(matchTerm))
+            dispatch(fetchResults());
             setPostsToLoad(11);
         }
-    }, [matchTerm, postStatus])
+    }, [matchTerm, postStatus, posts])
 
     const onClick = (e) => {
         e.preventDefault();
@@ -41,7 +41,7 @@ const SearchResults = ({ match }) => {
     }
     
     let content
-    let button = postsToLoad <= posts.data.children.length && currentType !== 'sr'  ? <button className="load-more" onClick={onClick} >Load More</button> : null;
+    let button = postsToLoad <= 200 && currentType !== 'sr'  ? <button className="load-more" onClick={onClick} >Load More</button> : null;
     
     if(postStatus === 'finding' && currentType === 'link'){
         content = Array(10).fill().map((item, i) => (
@@ -61,7 +61,11 @@ const SearchResults = ({ match }) => {
     ))
     } else if (postStatus === 'error'){
         content = {error};
-    }  
+    } else {
+        content = Array(10).fill().map((item, i) => (
+            <PostsListSkeleton key={i} />
+        ))
+    }; 
 
     return(
         <div className='feed'>

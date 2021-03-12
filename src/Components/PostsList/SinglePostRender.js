@@ -11,16 +11,13 @@ import Awards from './Awards';
 
 import Comments from './Comments';
 
-const SinglePostRender = ({ post }) => {
+const SinglePostRender = ({ post, comments }) => {
 
     let content;
-    let commentUrl;
 
     if(post === null || post === undefined){
-        content = <PostsListSkeleton />
-        commentUrl = null;
+        content = <PostsListSkeleton name='single' />
     } else {
-        commentUrl = post.data.permalink;
         const upVotes = numeral(post.data.ups).format('0a');
         const date = new Date(post.data.created_utc * 1000);
 
@@ -65,9 +62,9 @@ const SinglePostRender = ({ post }) => {
     return (
         <div className="singlepost">
             {content}
-            <Comments url={commentUrl} />
+            <Comments comments={comments} />
         </div>
     )
-}
+};
 
 export default SinglePostRender;

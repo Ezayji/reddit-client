@@ -1,21 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import SingleComment from './SingleComment';
 
 import CommentsSkeleton from '../Skeletons/CommentsSkeleton';
 
-const Content = ({ url }) => {
-    const [comments, setComments] = useState(null);
-    
-    useEffect(() => {
-        const clink = `https://www.reddit.com${url}.json?limit=200`
-        async function fetchComments(){
-            const response = await fetch(clink);
-            const jsonResponse = await response.json();
-            setComments(jsonResponse);
-        }
-        fetchComments();
-    }, [url])
-    
+const Content = ({ comments }) => {
+
     let commentsRender;
 
     if(!comments){
@@ -25,7 +14,7 @@ const Content = ({ url }) => {
         
     } else {
         commentsRender = (
-            comments[1].data.children.map((comment, i) => (
+            comments.map((comment, i) => (
                 <SingleComment comment={comment} key={i} />
             ))
         )
@@ -36,6 +25,6 @@ const Content = ({ url }) => {
             {commentsRender}
         </div>
     )
-}
+};
 
 export default Content;

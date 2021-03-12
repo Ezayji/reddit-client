@@ -1,18 +1,19 @@
+import { useDispatch } from 'react-redux';
 import { subRedditAdded, fetchSubPosts } from '../Redux/SubReditPostsSlice';
 import defaultThumb from '../../redditheader5.png';
 import numeral from 'numeral';
 import { Link } from 'react-router-dom';
-import Store from '../Redux/Store';
 
 const CommunityList = ({ community }) => {
+    const dispatch = useDispatch();
     const members = numeral(community.data.subscribers).format('0.0a');
 
     let src;
 
     const onClick = (e) => {
         e.preventDefault();
-        Store.dispatch(subRedditAdded(community.data.display_name));
-        Store.dispatch(fetchSubPosts());
+        dispatch(subRedditAdded(community.data.display_name));
+        dispatch(fetchSubPosts());
     }
 
     if(community.data.community_icon !== ""){

@@ -95,5 +95,3 @@ export const selectPostById = (state, postId) => {
 
     return posts[nr]
 };
-
-/* 'https://www.reddit.com/r/EarthPorn.json?limit=50' 'https://www.reddit.com/search.json?q=ai%20' */

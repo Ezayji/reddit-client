@@ -29,8 +29,6 @@ const SingleComment = ({ comment }) => {
         }
     }
 
-    /* && !comment.data.replies.children[0].kind.includes("more") */
-
     if (comment.data.replies){
         ifReplies = <input className="show-replies" type="submit" value={value} onClick={onClick} />
         reply = comment.data.replies.data.children.map((reply, i) => (
@@ -68,11 +66,3 @@ const SingleComment = ({ comment }) => {
 }
 
 export default SingleComment;
-
-/* 
-        <div>
-            <ReactMarkdown plugins={[gfm]} children={comment.data.body} renderers={renderers} />
-        </div>
-
-        <p>{comment.data.body}</p>
-*/
