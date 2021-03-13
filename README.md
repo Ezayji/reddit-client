@@ -1,7 +1,7 @@
 # Reddit Browsing Client
-<div>
-  <img src='https://imgur.com/qrXE6DR' alt='Reddit Client Desktop' />
-</div>
+
+![Reddit Browsing Client Desktop](https://imgur.com/qrXE6DR)
+
 ### Created by Ezayji in January 2021
 ## General info
 **Simple Reddit Browsing Client**<br/>
