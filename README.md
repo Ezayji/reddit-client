@@ -1,4 +1,5 @@
 # Reddit Browsing Client
+<img src='https://imgur.com/qrXE6DR' />
 ### Created by Ezayji in January 2021
 ## General info
 **Simple Reddit Browsing Client**<br/>
