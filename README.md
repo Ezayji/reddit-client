@@ -18,7 +18,9 @@ The project is created with:
 * HTML
 * CSS
 
-Fetch requests are made to **Reddit JSON API**
+Fetch requests are made to **Reddit JSON API**<br/>
+The intention of this project was to learn combining React and Redux technologies.<br/>
+*The structure of the component folders and CSS should be improved progressively*<br/>
 
 # Setup
 For local hosting:
@@ -30,4 +32,4 @@ For local hosting:
 > $ npm start
 * The app should be accessible on 'http://localhost:3000/'
 
-**For live version visit :**
+**For live version visit: [Reddit Client](https://reddit-client-ezayji.netlify.app/)**
