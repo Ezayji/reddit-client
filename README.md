@@ -1,6 +1,6 @@
 # Reddit Browsing Client
 
-![Reddit Browsing Client Desktop](https://imgur.com/qrXE6DR)
+![Reddit Browsing Client Desktop](https://i.imgur.com/qrXE6DR.png)
 
 ### Created by Ezayji in January 2021
 ## General info
