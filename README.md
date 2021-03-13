@@ -1,12 +1,12 @@
 # Reddit Browsing Client
 
-*Main page*
+*Main page*<br/>
 ![Reddit Browsing Client Desktop](https://i.imgur.com/qrXE6DR.png)
 
-*Search results on mobile*
+*Search results on mobile*<br/>
 ![Reddit Browsing Client Mobile 1](https://i.imgur.com/ZzSVOHS.png)
 
-*Post page on mobile*
+*Post page on mobile*<br/>
 ![Reddit Browsing Client Mobile 2](https://i.imgur.com/iFj6MyF.png)
 
 ### Created by Ezayji in January 2021
